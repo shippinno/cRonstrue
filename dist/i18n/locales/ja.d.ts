@@ -30,6 +30,7 @@ export declare class ja implements Locale {
     spaceX0OfTheMonth(): string;
     commaOnTheLastX0OfTheMonth(): string;
     commaOnlyOnX0(): string;
+    commaOnlyInYearX0(): string;
     commaEveryX0Months(): string;
     commaOnlyInX0(): string;
     commaOnTheLastDayOfTheMonth(): string;
@@ -54,6 +55,7 @@ export declare class ja implements Locale {
     commaYearX0ThroughYearX1(): string;
     lastDay(): string;
     commaAndOnX0(): string;
+    dayX0(): string;
     daysOfTheWeek(): string[];
     monthsOfTheYear(): string[];
 }

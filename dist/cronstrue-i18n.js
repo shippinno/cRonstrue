@@ -130,6 +130,10 @@ var ExpressionDescriptor = (function () {
             locale: locale,
         };
         var descripter = new ExpressionDescriptor(expression, options);
+        if (locale == 'ja') {
+            return descripter.getFullDescription().replace(/\s+/g, ' ').replace(/, /g, ",")
+                .replace(/, ,/g, ",").replace(/,,/g, ",").replace(/ ,/g, ",").trim();
+        }
         return descripter.getFullDescription();
     };
     ExpressionDescriptor.initialize = function (localesLoader) {
@@ -4133,7 +4137,7 @@ var ja = (function () {
     function ja() {
     }
     ja.prototype.use24HourTimeFormatByDefault = function () {
-        return false;
+        return true;
     };
     ja.prototype.everyMinute = function () {
         return "毎分";
@@ -4145,127 +4149,130 @@ var ja = (function () {
         return "式の記述を生成する際にエラーが発生しました。Cron 式の構文を確認してください。";
     };
     ja.prototype.atSpace = function () {
-        return "次において実施";
+        return "";
     };
     ja.prototype.everyMinuteBetweenX0AndX1 = function () {
-        return "%s から %s まで毎分";
+        return "%s～%s,毎分";
     };
     ja.prototype.at = function () {
-        return "次において実施";
+        return "";
     };
     ja.prototype.spaceAnd = function () {
-        return "と";
+        return ",";
     };
     ja.prototype.everySecond = function () {
         return "毎秒";
     };
     ja.prototype.everyX0Seconds = function () {
-        return "%s 秒ごと";
+        return "%s秒おき";
     };
     ja.prototype.secondsX0ThroughX1PastTheMinute = function () {
-        return "毎分 %s 秒から %s 秒まで";
+        return "毎分%s秒～%s秒";
     };
     ja.prototype.atX0SecondsPastTheMinute = function () {
-        return "毎分 %s 秒過ぎ";
+        return "毎分%s秒";
     };
     ja.prototype.everyX0Minutes = function () {
-        return "%s 分ごと";
+        return "%s分おき ";
     };
     ja.prototype.minutesX0ThroughX1PastTheHour = function () {
-        return "毎時 %s 分から %s 分まで";
+        return " 毎時%s分～%s分";
     };
     ja.prototype.atX0MinutesPastTheHour = function () {
-        return "毎時 %s 分過ぎ";
+        return " 毎時%s分";
     };
     ja.prototype.everyX0Hours = function () {
-        return "%s 時間ごと";
+        return "%s時間おき";
     };
     ja.prototype.betweenX0AndX1 = function () {
-        return "%s と %s の間";
+        return "%s～%s";
     };
     ja.prototype.atX0 = function () {
-        return "次において実施 %s";
+        return "%s";
     };
     ja.prototype.commaEveryDay = function () {
-        return "、毎日";
+        return ", 毎日";
     };
     ja.prototype.commaEveryX0DaysOfTheWeek = function () {
-        return "、週のうち %s 日ごと";
+        return ", %s日ごと";
     };
     ja.prototype.commaX0ThroughX1 = function () {
-        return "、%s から %s まで";
+        return " , %s～%s";
     };
     ja.prototype.first = function () {
-        return "1 番目";
+        return ",毎月第1";
     };
     ja.prototype.second = function () {
-        return "2 番目";
+        return ",毎月第2";
     };
     ja.prototype.third = function () {
-        return "3 番目";
+        return ",毎月第3";
     };
     ja.prototype.fourth = function () {
-        return "4 番目";
+        return ",毎月第4";
     };
     ja.prototype.fifth = function () {
-        return "5 番目";
+        return ",毎月第5";
     };
     ja.prototype.commaOnThe = function () {
-        return "次に";
+        return " ";
     };
     ja.prototype.spaceX0OfTheMonth = function () {
-        return "月のうち %s";
+        return "%s";
     };
     ja.prototype.commaOnTheLastX0OfTheMonth = function () {
-        return "月の最後の %s に";
+        return ",毎月最後の%s";
     };
     ja.prototype.commaOnlyOnX0 = function () {
-        return "%s にのみ";
+        return ", %sのみ";
+    };
+    ja.prototype.commaOnlyInYearX0 = function () {
+        return ", %s年のみ";
     };
     ja.prototype.commaEveryX0Months = function () {
-        return "、%s か月ごと";
+        return ",%sか月おき";
     };
     ja.prototype.commaOnlyInX0 = function () {
-        return "%s でのみ";
+        return ", %sのみ";
     };
     ja.prototype.commaOnTheLastDayOfTheMonth = function () {
-        return "次の最終日に";
+        return ",月の最終日";
     };
     ja.prototype.commaOnTheLastWeekdayOfTheMonth = function () {
-        return "月の最後の平日に";
+        return ",毎月最後の平日";
     };
     ja.prototype.firstWeekday = function () {
         return "最初の平日";
     };
     ja.prototype.weekdayNearestDayX0 = function () {
-        return "%s 日の直近の平日";
+        return "%s日の直近の平日";
     };
     ja.prototype.commaOnTheX0OfTheMonth = function () {
-        return "月の %s に";
+        return ",毎月%s";
     };
     ja.prototype.commaEveryX0Days = function () {
-        return "、%s 日ごと";
+        return ",%s日ごと";
     };
     ja.prototype.commaBetweenDayX0AndX1OfTheMonth = function () {
-        return "、月の %s 日から %s 日の間";
+        return ",毎月%s～%s";
     };
     ja.prototype.commaOnDayX0OfTheMonth = function () {
-        return "、月の %s 日目";
+        return ",毎月%s";
     };
     ja.prototype.spaceAndSpace = function () {
         return "と";
     };
     ja.prototype.commaEveryMinute = function () {
-        return "、毎分";
+        return ",毎分";
     };
     ja.prototype.commaEveryHour = function () {
-        return "、毎時";
+        return ",毎時";
     };
     ja.prototype.commaEveryX0Years = function () {
-        return "、%s 年ごと";
+        return ",%s年ごと";
     };
     ja.prototype.commaStartingX0 = function () {
-        return "、%s に開始";
+        return ",%sから開始";
     };
     ja.prototype.aMPeriod = function () {
         return "AM";
@@ -4274,7 +4281,7 @@ var ja = (function () {
         return "PM";
     };
     ja.prototype.commaDaysBeforeTheLastDayOfTheMonth = function () {
-        return "月の最終日の %s 日前";
+        return ", 月の最終日の%s日前";
     };
     ja.prototype.atX0SecondsPastTheMinuteGt20 = function () {
         return null;
@@ -4292,10 +4299,13 @@ var ja = (function () {
         return "最終日";
     };
     ja.prototype.commaAndOnX0 = function () {
-        return "、〜と %s";
+        return ", %s";
+    };
+    ja.prototype.dayX0 = function () {
+        return "%s日";
     };
     ja.prototype.daysOfTheWeek = function () {
-        return ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
+        return ["日曜", "月曜", "火曜", "水曜", "木曜", "金曜", "土曜"];
     };
     ja.prototype.monthsOfTheYear = function () {
         return ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];

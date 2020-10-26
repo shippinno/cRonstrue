@@ -50,6 +50,11 @@ export class ExpressionDescriptor {
     };
 
     let descripter = new ExpressionDescriptor(expression, options);
+
+    if (locale == 'ja') {
+      return descripter.getFullDescription().replace(/\s+/g, ' ').replace(/, /g, ",")
+      .replace(/, ,/g, ",").replace(/,,/g, ",").replace(/ ,/g, ",").trim();
+    }
     return descripter.getFullDescription();
   }
 
